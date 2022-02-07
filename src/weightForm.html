@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Weight Checker</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Weight Checker</h2>
+        <form action="" method="POST" >
+            <div class="row">
+                <div class="col-2"><label for="name">Name</label></div>
+                <div class="col-6"><input type="text" name="" id="name" class=""></div>
+            </div>
+            <div class="row">
+                <div class="col-2"><label for="age">Age</label></div>
+                <div class="col-6"><input type="text" name="" id="age" class=""></div>
+            </div>
+            <div class="row">
+                <div class="col-2"><label for="weight">Weight</label></div>
+                <div class="col-6"><input type="number" name="" id="weight" class=""></div>
+            </div>
+            <div class="row" id="btnContainer">
+                <input type="button" value="Submit" id="submitBtn" onclick="submitWForm()">
+            </div>
+        </form>
+        <div id="output"></div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

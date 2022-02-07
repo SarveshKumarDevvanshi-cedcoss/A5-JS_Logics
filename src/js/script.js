@@ -15,13 +15,7 @@ function submitProductForm() {
     //Display the Product
     displayInTable(product.products);
   } else {
-    var errMsg = ""; //Containes All The Error Messages
-    for (let i = 0; i < error.length; i++) {
-      errMsg += `<p>${error[i].type}</p>`;
-    }
-    document.getElementById("output").innerHTML = errMsg; // Setting the Error Message to output
-    
-    error.length = 0; //Making the error free for again checking.
+    displayError(error);
     
   }
 }
@@ -64,4 +58,95 @@ function validateFields(pid, pName, pPrice) {
   }
 
   return flag;
+}
+//display the error
+function displayError(error){
+    var errMsg = ""; //Containes All The Error Messages
+    for (let i = 0; i < error.length; i++) {
+      errMsg += `<p>${error[i].type}</p>`;
+    }
+    document.getElementById("output").innerHTML = errMsg; // Setting the Error Message to output
+    
+    error.length = 0; //Making the error free for again checking.
+}
+
+
+//Weight Form
+const werror=[];
+function submitWForm(){
+    var name=document.getElementById("name");
+    var age=document.getElementById("age");
+    var weight=document.getElementById("weight");
+    
+    if(validateWeightForm(name,age, weight)){
+        const obj=[{"Name":name.value, "Age":age.value, "Weight":weight.value}];
+        name.style.borderColor = "black";
+        age.style.borderColor = "black";
+        weight.style.borderColor = "black";
+        ageChecker(obj);
+        console.log(obj);
+    }
+    else{
+        displayError(werror);
+    }
+}
+
+//validate the weight Form
+function validateWeightForm(name, age, weight){
+    if(name.value.length <=0 || !isNaN(name.value)){
+        werror.push({ type: "Please Enter a Valid Name" });
+        name.style.borderColor="red";
+        return false;
+    }
+    else if(age.value.length <=0 || isNaN(age.value)){
+        werror.push({ type: "Please Enter a Valid age" });
+        age.style.borderColor="red";
+        return false;
+    }
+    else if(weight.value.length <=0 || isNaN(weight.value)){
+        werror.push({ type: "Please Enter a Valid weight" });
+        weight.style.borderColor="red";
+        return false;
+    }
+    return true;
+}
+
+//Check the age
+function ageChecker(obj){
+    var a=obj[0].Age;
+    var n=obj[0].Name;
+    if(a >= 5 && a <= 7){
+      weigthChecker(obj, 15, 20);
+    }
+    else if(a >= 8 && a <= 10){
+      weigthChecker(obj, 21, 25);
+    }
+    else if(a >= 11 && a <= 15){
+      weigthChecker(obj, 26, 30);
+    }
+    else if(a >= 16 && a <= 20){
+      weigthChecker(obj, 31, 40);
+    }
+    else{
+      displayMsg(`Hello ${n}!!! Age not defined.`);
+    }
+}
+
+//display Message
+function displayMsg(msg){
+  document.getElementById("output").innerHTML=`<p>${msg}</p>`;
+}
+
+//check the weights
+function weigthChecker(obj,w1,w2){
+  var w=obj[0].Weight;
+  if(w <=w2 && w >=w1){
+    displayMsg(`Hello ${obj[0].Name}!!! Your Weight is perfect.`);
+  }
+  else if( w >w2){
+    displayMsg(`Hello ${obj[0].Name}!!! Your weight is greater than the recommanded value of ${obj[0].Weight}KG at an age of ${obj[0].Age}`);
+  }
+  else if(w < w1){
+    displayMsg(`Hello ${obj[0].Name}!!! Your weight is less than the recommanded value of ${obj[0].Weight}KG at an age of ${obj[0].Age}`);
+  }
 }

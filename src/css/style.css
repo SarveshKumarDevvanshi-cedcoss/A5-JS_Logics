@@ -45,4 +45,9 @@ input#submitBtn {
     font-size: 18px;
     border-radius: 5px;
     cursor: pointer;
+    border: none;
+    box-shadow: 1px 1px 7px 0px dodgerblue;
+}
+input#submitBtn:active{
+    font:message-box;
 }
