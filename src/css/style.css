@@ -22,7 +22,8 @@ input{
     padding: 5px;
 }
 #btnContainer{
-    padding-left: 20%;
+    /* padding-left: 20%; */
+    display: block;
 }
 table{
     width: 100%;
@@ -38,9 +39,10 @@ td{
     margin: 1%;
     padding: 2%;
 }
-input#submitBtn {
+input[type=button] {
     background-color: dodgerblue;
     padding: 1%;
+    margin: 1%;
     color: white;
     font-size: 18px;
     border-radius: 5px;
@@ -48,6 +50,9 @@ input#submitBtn {
     border: none;
     box-shadow: 1px 1px 7px 0px dodgerblue;
 }
-input#submitBtn:active{
+input[type=button]:active{
     font:message-box;
+}
+#updateBtn{
+    display: none;
 }
